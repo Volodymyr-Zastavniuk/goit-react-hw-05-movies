@@ -29,7 +29,7 @@ export default function SearchPage() {
       <ul>
         {searchResults.map(({ id, title }) => (
           <li key={id}>
-            <a href="#">{title} </a>
+            <a href="/car">{title} </a>
           </li>
         ))}
       </ul>
