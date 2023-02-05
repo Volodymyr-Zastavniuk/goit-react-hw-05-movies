@@ -1,0 +1,22 @@
+.Nav {
+}
+
+.Nav__list {
+  margin: 0;
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+.Nav__list-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.Nav__list-link:hover,
+.Nav__list-link:focus {
+  color: red;
+  text-decoration: underline;
+}
+.active {
+  color: red;
+}

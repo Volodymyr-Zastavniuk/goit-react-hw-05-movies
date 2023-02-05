@@ -1,16 +1,17 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './Layout/Layout';
+import HomePage from 'pages/HomePage/HomePage';
+import SearchPage from 'pages/SearchPage/SearchPage';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <BrowserRouter basename="goit-react-hw-05-movies">
+      <Layout>
+        <Routes>
+          <Route path="" element={<HomePage />} />
+          <Route path="/movies" element={<SearchPage />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   );
 };
