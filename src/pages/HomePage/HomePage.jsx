@@ -22,7 +22,7 @@ export default function HomePage() {
       <ul>
         {trendingMovies.map(({ id, title }) => (
           <li key={id}>
-            <a href="#">{title} </a>
+            <a href="/id">{title} </a>
           </li>
         ))}
       </ul>
