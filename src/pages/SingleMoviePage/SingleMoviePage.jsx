@@ -1,6 +1,6 @@
 import { Link, useParams, Outlet, useLocation } from 'react-router-dom';
 import { BiArrowBack } from 'react-icons/bi';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import * as API from '../../service/MoviesApi';
 import './SingleMoviePage.css';
 
@@ -12,17 +12,14 @@ function getGenres(genres) {
 
 export default function SingleMoviePage() {
   const [movie, setMovie] = useState({});
-  const [isLoading, setIsloading] = useState(true);
   const { movieId } = useParams();
   const location = useLocation();
 
   useEffect(() => {
-    setIsloading(true);
     async function fetchMovies() {
       try {
         const data = await API.fetchData(API.PATH.searchByID(movieId));
         setMovie(data);
-        setIsloading(false);
       } catch (error) {
         console.log(error);
       }
@@ -30,13 +27,12 @@ export default function SingleMoviePage() {
     fetchMovies();
   }, [movieId]);
 
+  if (Object.keys(movie).length === 0) {
+    return;
+  }
+
   const { title, overview, vote_average, poster_path, release_date, genres } =
     movie;
-
-  if (isLoading) {
-    return;
-    // LOADER !!!
-  }
 
   return (
     <section>
@@ -84,7 +80,9 @@ export default function SingleMoviePage() {
           </li>
         </ul>
       </div>
-      <Outlet />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </section>
   );
 }

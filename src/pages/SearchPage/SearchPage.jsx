@@ -4,7 +4,6 @@ import * as API from '../../service/MoviesApi';
 import Searchbar from 'components/SearchBar/Searchbar';
 
 export default function SearchPage() {
-  // const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();

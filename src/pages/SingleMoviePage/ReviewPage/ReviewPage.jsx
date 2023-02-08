@@ -2,21 +2,17 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import * as API from '../../../service/MoviesApi';
 
-// export default function ReviewPage() {
-const ReviewPage = () => {
+export default function ReviewPage() {
   const [reviews, setReviews] = useState([]);
-  const [isLoading, setIsloading] = useState(true);
   const { movieId } = useParams();
 
   useEffect(() => {
-    setIsloading(true);
     async function fetchMovies() {
       try {
         const { results } = await API.fetchData(
           API.PATH.searchReviews(movieId)
         );
         setReviews(results);
-        setIsloading(false);
       } catch (error) {
         console.log(error);
       }
@@ -24,17 +20,12 @@ const ReviewPage = () => {
     fetchMovies();
   }, [movieId]);
 
-  if (isLoading) {
-    return;
-    // LOADER !!!
-  }
-
   return (
     <>
       {reviews.length === 0 ? (
         <p>We don't have any reviews for this movie</p>
       ) : (
-        <ul className="review-wrapper ">
+        <ul>
           {reviews.map(({ author, content, id }) => (
             <li key={id}>
               <p>
@@ -47,6 +38,4 @@ const ReviewPage = () => {
       )}
     </>
   );
-};
-
-export default ReviewPage;
+}

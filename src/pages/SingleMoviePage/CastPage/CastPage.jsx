@@ -2,19 +2,15 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import * as API from '../../../service/MoviesApi';
 
-// export default function CastPage() {
-const CastPage = () => {
+export default function CastPage() {
   const [cast, setCast] = useState([]);
-  const [isLoading, setIsloading] = useState(true);
   const { movieId } = useParams();
 
   useEffect(() => {
-    setIsloading(true);
     async function fetchMovies() {
       try {
         const { cast } = await API.fetchData(API.PATH.searchCast(movieId));
         setCast(cast);
-        setIsloading(false);
       } catch (error) {
         console.log(error);
       }
@@ -22,9 +18,8 @@ const CastPage = () => {
     fetchMovies();
   }, [movieId]);
 
-  if (isLoading) {
+  if (cast.length === 0) {
     return;
-    // LOADER !!!
   }
 
   return (
@@ -51,6 +46,4 @@ const CastPage = () => {
       </ul>
     </>
   );
-};
-
-export default CastPage;
+}

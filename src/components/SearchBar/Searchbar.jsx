@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { BsSearch } from 'react-icons/bs';
 import './Searchbar.css';
-// isLoading;
+
 export default function Searchbar({ query, onSubmit }) {
   const [searchQuery, setSearchQuery] = useState(query);
 
@@ -28,7 +28,6 @@ export default function Searchbar({ query, onSubmit }) {
         onChange={event => setSearchQuery(event.currentTarget.value)}
         maxLength={30}
       />
-      {/* disabled={isLoading} */}
       <button type="submit" className="SearchForm-button">
         <BsSearch className="SearchForm-icon" />
         <span className="SearchForm-button-label">Search</span>
@@ -38,6 +37,6 @@ export default function Searchbar({ query, onSubmit }) {
 }
 
 Searchbar.propTypes = {
-  // isLoading: PropTypes.bool.isRequired,
+  query: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
