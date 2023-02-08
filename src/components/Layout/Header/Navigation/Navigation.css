@@ -1,6 +1,3 @@
-.Nav {
-}
-
 .Nav__list {
   margin: 0;
   display: flex;
@@ -12,11 +9,9 @@
   color: inherit;
 }
 
-.Nav__list-link:hover,
-.Nav__list-link:focus {
+.Nav__list-link:hover {
   color: red;
-  text-decoration: underline;
 }
 .active {
-  color: red;
+  box-shadow: 0 4px 0px 0px rgb(0 0 0 / 20%);
 }

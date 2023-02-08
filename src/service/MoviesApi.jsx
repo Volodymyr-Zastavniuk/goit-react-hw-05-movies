@@ -6,6 +6,8 @@ export const PATH = {
   trending: 'trending/movie/day',
   searchByName: 'search/movie',
   searchByID: id => `/movie/${id}`,
+  searchCast: id => `/movie/${id}/credits`,
+  searchReviews: id => `/movie/${id}/reviews`,
 };
 
 export const fetchData = async (path, query) => {

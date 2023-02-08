@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
+import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import * as API from '../../service/MoviesApi';
 import Searchbar from 'components/SearchBar/Searchbar';
 
 export default function SearchPage() {
-  const [query, setQuery] = useState('');
+  // const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const query = searchParams.get('query') ?? '';
 
   useEffect(() => {
     async function fetchMovies() {
@@ -24,12 +28,14 @@ export default function SearchPage() {
 
   return (
     <>
-      <Searchbar onSubmit={setQuery} />
+      <Searchbar query={query} onSubmit={setSearchParams} />
       <h1>Found movies</h1>
       <ul>
         {searchResults.map(({ id, title }) => (
           <li key={id}>
-            <a href="/id">{title} </a>
+            <Link to={`${id}`} state={{ from: location }}>
+              {title}{' '}
+            </Link>
           </li>
         ))}
       </ul>

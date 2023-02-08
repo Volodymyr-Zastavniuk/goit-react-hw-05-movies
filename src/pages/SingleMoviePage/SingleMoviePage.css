@@ -1,0 +1,21 @@
+.movie-wrapper {
+  display: flex;
+  gap: 30px;
+  padding-bottom: 12px;
+}
+
+.movie-link {
+  margin-bottom: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+  color: inherit;
+}
+
+.movie-info {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  box-shadow: 0px -4px 0px 0px rgb(0 0 0 / 20%),
+    0px 4px 0px 0px rgb(0 0 0 / 20%);
+}

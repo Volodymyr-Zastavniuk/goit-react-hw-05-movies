@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { FcSearch } from 'react-icons/fc';
+import { BsSearch } from 'react-icons/bs';
 import './Searchbar.css';
 // isLoading;
-export default function Searchbar({ onSubmit }) {
-  const [searchQuery, setSearchQuery] = useState('');
+export default function Searchbar({ query, onSubmit }) {
+  const [searchQuery, setSearchQuery] = useState(query);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -13,7 +13,7 @@ export default function Searchbar({ onSubmit }) {
     if (normalizedQuery === '') {
       return alert('Please enter movie to find');
     }
-    onSubmit(normalizedQuery);
+    onSubmit({ query: normalizedQuery });
   };
 
   return (
@@ -30,7 +30,7 @@ export default function Searchbar({ onSubmit }) {
       />
       {/* disabled={isLoading} */}
       <button type="submit" className="SearchForm-button">
-        <FcSearch className="SearchForm-icon" />
+        <BsSearch className="SearchForm-icon" />
         <span className="SearchForm-button-label">Search</span>
       </button>
     </form>

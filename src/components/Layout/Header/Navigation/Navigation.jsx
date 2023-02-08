@@ -19,3 +19,9 @@ export default function Navigation() {
     </nav>
   );
 }
+
+/* <NavLink to="" className={getActiveClassName}></NavLink>;
+  // switch active class -> place function out of component:
+const getActiveClassName = ({ isActive }) => {
+  return isActive ? 'class active' : 'class';
+}; */
