@@ -28,16 +28,22 @@ export default function SearchPage() {
   return (
     <>
       <Searchbar query={query} onSubmit={setSearchParams} />
-      <h1>Found movies</h1>
-      <ul>
-        {searchResults.map(({ id, title }) => (
-          <li key={id}>
-            <Link to={`${id}`} state={{ from: location }}>
-              {title}{' '}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <>
+        {searchResults.length > 0 && (
+          <>
+            <h1>Found movies</h1>
+            <ul>
+              {searchResults.map(({ id, title }) => (
+                <li key={id}>
+                  <Link to={`${id}`} state={{ from: location }}>
+                    {title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </>
     </>
   );
 }
